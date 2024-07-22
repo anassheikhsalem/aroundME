@@ -1,0 +1,23 @@
+:root{
+  --darkbg:#222e3d;
+  --lighttext:#E1E1DF;
+}
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-darkContainer {
+  background-image: linear-gradient(90deg, var(--darkbg), #6D7E8A);
+  color:var(--lighttext);
+  max-width: 100dvw;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+a{
+  color: inherit;
+}

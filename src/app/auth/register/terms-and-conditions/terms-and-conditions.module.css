@@ -1,0 +1,33 @@
+.container{
+    position: relative;
+    max-width:70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.header{
+    font-size: 1.6rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.text{
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.text ul p {
+    padding-left: 10px;
+}
+
+.text ul div {
+    padding-left: 30px;
+}
+
+.text ul div ul {
+    padding-left: 40px;
+}

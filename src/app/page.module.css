@@ -1,0 +1,9 @@
+.container{
+  background-image: url("/images/bg-homepage.png");
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 70px);
+  width: 100vw;
+  padding-left: 50px;
+  padding-right: 50px;
+}

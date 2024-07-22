@@ -1,0 +1,89 @@
+.container{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.navContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    
+}
+
+.logoImage{
+    position: absolute;
+    top: -15px;
+    left: -5px;
+}
+
+.logoText{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logoText p{
+    color: #4fae37;
+}
+
+.logoText p span{
+    color: #4fae37;
+    font-size: 1.6rem;
+    margin-left: 10px;
+    font-family: cursive;
+}
+
+.linkContainer{
+    margin-left: 20px;
+}
+
+.linkContainer ul{
+    list-style: none;
+    display: flex;
+}
+
+.linkContainer ul li{
+    padding-left: 10px;
+}
+
+.link{
+    text-decoration: none;
+    color: #be9b78;
+    font-size: 1.1rem;
+}
+
+.link:hover{
+    color:#9f764c;
+}
+
+.activeLink{
+    color: #9f764c;
+}
+
+.registerBtn{
+    margin-right: 10px;
+}
+
+.lBtn{
+    padding: 8px;
+    background-color: #4fae37;
+    border-radius: 5px;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    color: var(--text);
+}
