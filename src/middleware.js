@@ -13,7 +13,7 @@ export function middleware(request) {
     const cookie = request.cookies.get('token');
     const isTokenExpired = !cookie || !cookie?.expiresAt || new Date() > new Date(cookie.expiresAt * 1000)
 
-    if (cookie?.length>0 && isPublicPath) {
+    if (cookie && isPublicPath) {
         return NextResponse.redirect(new URL('/profile', request.nextUrl));
     }
 
