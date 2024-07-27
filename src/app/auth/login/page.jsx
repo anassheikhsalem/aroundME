@@ -6,6 +6,8 @@ import Image from "next/image"
 import bcryptjs from "bcryptjs"
 import { NextResponse, userAgent } from "next/server"
 import { useRouter } from "next/navigation"
+import signIn from "next-auth"
+
 
 const loginPage = () => {
 
@@ -14,22 +16,16 @@ const loginPage = () => {
         password: ""
     });
     const router = useRouter();
-    const handleLogin = async(e) => {
-        e.preventDefault();
-        const res = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(logindata)
-        });
-
-        if (!res.ok) {
-            return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });
+    const handleLogin = async (e) => {
+        try {
+            e.preventDefault();
+            await signIn("credentials", logindata.email, logindata.password)
+            router.push('/');
+            return NextResponse.json({ message: "login successfully" }, { status: 200 });
+        } catch (error) {
+            return NextResponse.json({ message: "something went wrong: " + error }, { status: 401 });
         }
-
-        router.push('/');
-        return NextResponse.json({ message: "login successfully" }, { status: 200 });
+        
     }
 
     return (

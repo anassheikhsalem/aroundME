@@ -1,5 +1,10 @@
 import { NextAuthOptions } from "next-auth";
+import { NextResponse } from "next/server";
+import bcryptjs from "bcryptjs"
+import prisma from "@/prisma/index";
 import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google"
+import CredentialsProvider from "next-auth/providers/credentials"
 
 export const options = {
     providers: [
@@ -18,18 +23,36 @@ export const options = {
             password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-            
-            const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+                try {
+                    const reqBody = await req.json();
+                    const { email, password } = reqBody;
+                        
+                    const user = await prisma.user.findUnique({
+                        where: {
+                                email: email
+                        }
+                    });
 
-            if (user) {
-                // Any object returned will be saved in `user` property of the JWT
-                return user
-            } else {
-                // If you return null then an error will be displayed advising the user to check their details.
-                return null
+                    if (!user) {
+                        console.log('Invalid credentials');
+                        return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });
+                    }
 
-                // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
-            }
+                    const passwordMatched = await bcryptjs.compare(password, user.password);
+
+                    if (!passwordMatched) {
+                        console.log('Invalid credentials');
+                        return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 });
+                    }
+                    console.log('user found');
+                    console.log('Password matched');
+                        
+                    return user
+        
+                } catch (error) {
+                    console.log(error)
+                    return NextResponse.json({message:`server error: ${error}`}, {status:501})
+                }
             }
         })
     ],
