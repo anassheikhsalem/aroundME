@@ -6,7 +6,8 @@ import Image from "next/image"
 import bcryptjs from "bcryptjs"
 import { NextResponse, userAgent } from "next/server"
 import { useRouter } from "next/navigation"
-import signIn from "next-auth"
+import { useSession, signIn, signOut } from "next-auth/react"
+
 
 
 const loginPage = () => {
@@ -19,7 +20,9 @@ const loginPage = () => {
     const handleLogin = async (e) => {
         try {
             e.preventDefault();
-            await signIn("credentials", logindata.email, logindata.password)
+            console.log(logindata.email);
+            console.log(logindata.password);
+            await signIn("credentials", logindata)
             router.push('/');
             return NextResponse.json({ message: "login successfully" }, { status: 200 });
         } catch (error) {

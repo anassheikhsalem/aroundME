@@ -17,16 +17,11 @@ export const options = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
         }),
         CredentialsProvider({
+            id:"credentials",
             name: "Credentials",
-            credentials: {
-            email: { label: "Email", type: "email", placeholder: "email@email.com" },
-            password: { label: "Password", type: "password" }
-            },
-            async authorize(credentials, req) {
-                try {
-                    const reqBody = await req.json();
-                    const { email, password } = reqBody;
-                        
+            async authorize(credentials) {
+                try {                   
+                    console.log(credentials);                        
                     const user = await prisma.user.findUnique({
                         where: {
                                 email: email
@@ -48,7 +43,6 @@ export const options = {
                     console.log('Password matched');
                         
                     return user
-        
                 } catch (error) {
                     console.log(error)
                     return NextResponse.json({message:`server error: ${error}`}, {status:501})
@@ -57,6 +51,6 @@ export const options = {
         })
     ],
     pages: {
-        singIn: "/auth/login"
+        signIn: "/auth/login"
     }
 }

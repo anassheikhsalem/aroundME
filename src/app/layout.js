@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import { cookies } from 'next/headers'
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const cookieStore = cookies()
@@ -18,7 +19,9 @@ export default function RootLayout({ children }) {
       <body>
           <div className="main-darkContainer">
           <Header token={token} />
-            {children}
+            <AuthProvider>
+              { children }
+            </AuthProvider>
           </div>
       </body>
     </html>
