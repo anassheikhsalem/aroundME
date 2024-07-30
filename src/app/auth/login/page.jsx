@@ -8,8 +8,6 @@ import { NextResponse, userAgent } from "next/server"
 import { useRouter } from "next/navigation"
 import { useSession, signIn, signOut } from "next-auth/react"
 
-
-
 const loginPage = () => {
 
     const [logindata, setLogindata] = useState({
@@ -42,7 +40,15 @@ const loginPage = () => {
                         <div className={styles.logoText}>
                             ME
                         </div>
-                    </Link>
+                </Link>
+                <div className={styles.GoogleBtn}>
+                    
+                    <button className={styles.GoogleloginBtn} onClick={signIn("google")}>With Google login</button>
+                </div>
+                <div className={styles.GithubBtn}>
+                    
+                    <button className={styles.GithabloginBtn} onClick={signIn("github")}>With Githab login</button>
+                </div>
                     <form action="">
                     <input type="email" name="email" id="email" value={logindata.email} placeholder="your email address"
                     onChange={(e)=>setLogindata({...logindata, email : e.target.value})}/>
