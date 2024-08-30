@@ -1,12 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
-import { cookies } from 'next/headers'
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
-const cookieStore = cookies()
-const token = cookieStore.get('token')
 
 export const metadata = {
   title: "Around ME",
@@ -16,13 +13,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
+        <AuthProvider>
           <div className="main-darkContainer">
-          <Header token={token} />
-            <AuthProvider>
-              { children }
-            </AuthProvider>
+            <Header />
+            {children}
           </div>
+        </AuthProvider>
       </body>
     </html>
   );

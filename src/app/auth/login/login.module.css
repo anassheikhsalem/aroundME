@@ -29,8 +29,9 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    min-height: 380px;
+    min-height: 440px;
     min-width: 320px;
+    padding-bottom: 5px;
     z-index: +10;
     border-radius: 5px;
     background-image: linear-gradient(90deg, #f1eee6, #f6f7fa);
@@ -89,7 +90,7 @@
     border: 2px solid #4fae37;
     border-radius: 10px;
     color: #4fae37;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
 }
@@ -104,6 +105,57 @@
 .formContainer p {
     margin-bottom: 5px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: dimgray;
+}
+
+.formTxt{
+    color: var(--text);
+    margin: 15px 0;
+    text-align: center;
+}
+
+.socialBtnsContainer{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.GoogleBtn{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    gap: 5px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 3px 0;
+    cursor: pointer;
+}
+
+.GoogleloginBtn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.GithubBtn {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    gap: 5px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 3px 0;
+    cursor: pointer;
+}
+
+.GithabloginBtn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
 }
