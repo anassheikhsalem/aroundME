@@ -13,6 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+<<<<<<< HEAD
       <body>
         <div className="main-darkContainer">
           
@@ -23,6 +24,15 @@ export default function RootLayout({ children }) {
             </AuthProvider>
           </div>
         </div>
+=======
+      <body className={inter.className}>
+        <AuthProvider>
+          <div className="main-darkContainer">
+            <Header />
+            {children}
+          </div>
+        </AuthProvider>
+>>>>>>> e2b454520653e1cea4624894e26b71d586b9c928
       </body>
     </html>
   );

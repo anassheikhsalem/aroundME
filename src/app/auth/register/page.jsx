@@ -70,15 +70,19 @@ export default function register() {
                 <input type="text" name="address" className={styles.input} value={userdata.address} placeholder="address"
                 onChange={(e) => useUserData({ ...userdata, address: e.target.value })} />
                 <input type="text" name="phone" className={styles.input} value={userdata.phone} placeholder="phone"
-                onChange={(e) => useUserData({...userdata, phone: e.target.value}) } />
-                <button onClick={createUser} className={styles.registerBtn}>Register</button>
+                onChange={(e) => useUserData({ ...userdata, phone: e.target.value })} />
+                {!isChecked ?
+                  <button onClick={createUser} disabled className={styles.registerBtn}>Register</button>:
+                  <button onClick={createUser} className={styles.registerBtn}>Register</button>
+                }
+                
               
                 <div className={styles.termsContainer}>
                   <input type="checkbox" id="termsCb" name="termsCb" value={isChecked} onChange={(e) => setIsChecked(!isChecked)}/>
                   <p>I agree to the <Link href="/auth/register/terms-and-conditions">Terms of Service</Link> and Privacy Policy.</p>
                 </div>  
             </form>
-            <Link href="/login" className={styles.loginLink}>Do you an account?</Link>
+            <Link href="/auth/login" className={styles.loginLink}>Do you an account?</Link>
         </div>
     </>
   );
