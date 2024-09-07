@@ -1,45 +1,15 @@
 "use client"
 import styles from "@/components/Header/Header.module.css"
+import { useSession } from "next-auth/react";
 import Image from 'next/image';
 import Link from "next/link";
-import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react";
 
-const Header = (token) => {
-    const router = useRouter();
-    const [user, setUser] = useState(null);
-    const getUser = async() => {
-        try {
-            const res = await fetch('/api/auth/session', {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-                }
-            });
-            if (res.ok) {
-                const userData = await res.json();
-                console.log(token.token)
-                setUser(userData.user);
-                console.log("User found!", userData.user);   
-            }
-            else {
-                setUser(null);
-                console.log("No user found or token invalid!");
-            }
-        } catch (error) {
-            console.error("Error fetching user data:", error);
-            setUser(null);
-        } 
-    }
-    
-    useEffect(() => {
-        if (token.token) {
-            getUser();
-        } else {
-            console.log("No token provided!");
-        }
-    }, [token])
-    
+const authenticated = false
+
+const Header = () => {
+    const session = useSession();
+    console.log(session)
     const handleLogout = async () => {
         try {
             console.log("logout....")
@@ -77,9 +47,9 @@ const Header = (token) => {
                     </ul>
                 </nav>
             </div>
-            {user ?
+            {authenticated ?
                 <div className={styles.profileContainer}>
-                    <Link href='/profile' className={styles.registerBtn}>Hallo {user.firstname} {user.lastname}</Link>
+                    <Link href='/profile' className={styles.registerBtn}>Hallo User</Link>
                     <button className={styles.lBtn} onClick={handleLogout}>logout</button>
                 </div>  
                 :

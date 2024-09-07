@@ -75,7 +75,7 @@ export default function register() {
               
                 <div className={styles.termsContainer}>
                   <input type="checkbox" id="termsCb" name="termsCb" value={isChecked} onChange={(e) => setIsChecked(!isChecked)}/>
-                  <p>I agree to the <Link href="/register/terms-and-conditions">Terms of Service</Link> and Privacy Policy.</p>
+                  <p>I agree to the <Link href="/auth/register/terms-and-conditions">Terms of Service</Link> and Privacy Policy.</p>
                 </div>  
             </form>
             <Link href="/login" className={styles.loginLink}>Do you an account?</Link>

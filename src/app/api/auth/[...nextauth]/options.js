@@ -24,7 +24,7 @@ export const options = {
                     console.log(credentials);                        
                     const user = await prisma.user.findUnique({
                         where: {
-                                email: email
+                                email: credentials.email
                         }
                     });
 
@@ -33,7 +33,7 @@ export const options = {
                         return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });
                     }
 
-                    const passwordMatched = await bcryptjs.compare(password, user.password);
+                    const passwordMatched = await bcryptjs.compare(credentials.password, user.password);
 
                     if (!passwordMatched) {
                         console.log('Invalid credentials');
