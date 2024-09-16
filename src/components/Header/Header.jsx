@@ -7,7 +7,6 @@ import { useSession, signOut } from "next-auth/react";
 const Header = () => {
     const { data: session, status } = useSession();
 
-    // If the status is loading, you can return a loading state
     if (status === "loading") {
         return <p>Loading...</p>;
     }

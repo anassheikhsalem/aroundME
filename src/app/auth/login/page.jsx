@@ -23,8 +23,7 @@ const LoginPage = () => {
         });
 
         if (result.error) {
-            console.error(result.error);
-            // Handle error, maybe show an alert or message to the user
+            alert(error)
         } else {
             router.push('/');
         }
@@ -62,11 +61,11 @@ const LoginPage = () => {
                     <h3 className={styles.formTxt}>or</h3>
                     <div className={styles.socialBtnsContainer}>
                         <div className={styles.GoogleBtn}>
-                            <Image src="/images/iconGoogle.png" width='20' height='20'></Image>
+                            <Image src="/images/iconGoogle.png" width='20' height='20' alt="Google"></Image>
                             <button className={styles.GoogleloginBtn} onClick={() => signIn("google")}>with Google login</button>
                         </div>
                         <div className={styles.GithubBtn}>
-                            <Image src="/images/iconGithub.png" width='20' height='20'></Image>
+                            <Image src="/images/iconGithub.png" width='20' height='20' alt="Github"></Image>
                             <button className={styles.GithabloginBtn} onClick={() => signIn("github")}>with Github login</button>
                         </div>
                     </div>
