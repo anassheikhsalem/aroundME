@@ -50,9 +50,9 @@ export const mailer = async ( email, mailType, userId ) => {
                                     </div>
                                     <div style="line-height: 1.6;">
                                         <p>Please verify your account by clicking on the following link:</p>
-                                        <a href="http://localhost:3000/login/verifying/account/${encodedToken}" style="display: inline-block; padding: 10px 20px; margin: 20px 0; font-size: 16px; color: #ffffff; background-color: #4CAF50; text-decoration: none; border-radius: 5px;">Verify your account</a>
+                                        <a href="http://localhost:3000/auth/login/verifying/account/${encodedToken}" style="display: inline-block; padding: 10px 20px; margin: 20px 0; font-size: 16px; color: #ffffff; background-color: #4CAF50; text-decoration: none; border-radius: 5px;">Verify your account</a>
                                         <p>If it doesn't work, please copy the following link and paste it in your web browser:</p>
-                                        <p><a href="http://localhost:3000/login/verifying/account/${encodedToken}" style="color: #4CAF50;">http://localhost:3000/login/verifying/account/${encodedToken}</a></p>
+                                        <p><a href="http://localhost:3000/auth/login/verifying/account/${encodedToken}" style="color: #4CAF50;">http://localhost:3000/login/verifying/account/${encodedToken}</a></p>
                                     </div>
                                     <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #888;">
                                         <p>Thank you!<br>Your aroundME Team</p>

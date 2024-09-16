@@ -13,7 +13,9 @@ export default async function middleware(req) {
   const publicPaths = [
     "/auth/login", 
     "/auth/register", 
-    "/auth/login/verifying/account", 
+    "/auth/login/verifying/account",
+    "/auth/login/password/new",
+    "/auth/login/password/reset", 
     "/auth/register/terms-and-conditions"
   ];
 

@@ -15,20 +15,20 @@ const LoginPage = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        
+    
         const result = await signIn("credentials", {
             redirect: false,
             email: logindata.email,
             password: logindata.password,
         });
-
-        if (result.error) {
+    
+        if (result?.error) {
             console.error(result.error);
-            // Handle error, maybe show an alert or message to the user
         } else {
             router.push('/');
         }
     };
+    
 
     return (
         <div className={styles.container}>
