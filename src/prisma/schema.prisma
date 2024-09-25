@@ -15,6 +15,7 @@ generator client {
 
 model User {
   id                   String    @id @default(auto()) @map("_id") @db.ObjectId
+  providerUserId       String?   @unique
   firstname            String
   lastname             String
   email                String    @unique
@@ -29,22 +30,10 @@ model User {
   verifyExpairy        DateTime?
   passwordResetToken   String?
   passwordResetExpairy DateTime?
-  accounts             Account[]
   sessions             Session[]
-}
-
-model Account {
-  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
-  userId             String    @db.ObjectId
-  type               String
-  provider           String
-  providerAccountId  String
-  refreshToken       String?
-  accessToken        String?
-  accessTokenExpires DateTime?
-  user               User      @relation(fields: [userId], references: [id])
-
-  @@unique([provider, providerAccountId])
+  aboOwner             Boolean   @default(false)
+  aboId                String    @db.ObjectId
+  abo                  Abo       @relation(fields: [aboId], references: [id])
 }
 
 model Session {
@@ -53,4 +42,31 @@ model Session {
   userId       String   @db.ObjectId
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id])
+}
+
+model Licnese {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  maxUser     Int
+  perUser     Float
+  description String
+  features    Feature[]
+}
+
+model Feature {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  feature   String
+  licenseId String  @db.ObjectId
+  license   Licnese @relation(fields: [licenseId], references: [id])
+}
+
+model Abo {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  users         User[]
+  expireDate    DateTime
+  expired       Boolean  @default(false)
+  paid          Boolean  @default(false)
+  paymentMethod String
+  paymentId     String
+  paymentDate   DateTime
 }
