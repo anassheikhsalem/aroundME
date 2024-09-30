@@ -34,6 +34,8 @@ model User {
   aboOwner             Boolean   @default(false)
   aboId                String    @db.ObjectId
   abo                  Abo       @relation(fields: [aboId], references: [id])
+  departmentId  String @db.ObjectId
+  department Department @relation(fields: [departmentId], references: [id])
 }
 
 model Session {
@@ -69,4 +71,31 @@ model Abo {
   paymentMethod String
   paymentId     String
   paymentDate   DateTime
+  theme Theme[]
+}
+
+model Theme {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  logo String? 
+  mainColor String?
+  secondColor String?
+  aboId String @db.ObjectId
+  abo Abo @relation(fields: [aboId], references: [id])
+}
+
+model Department {
+  id String @default(auto()) map("_id") @id @db.ObjectId
+  name String
+  user User[]
+}
+
+model Link{
+  id String @default(auto()) @id @map("_id") @db.ObjectId
+  url String
+
+}
+
+model linkCategory{
+  
 }
